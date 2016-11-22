@@ -11,3 +11,6 @@ A quick android currency converter that uses exchange rates from http://fixer.io
 
 
 
+## RESTful endpoint consumed
+
+http://api.fixer.io/latest?base=USD

@@ -1,9 +1,11 @@
 package com.jeffreydrost.currencyconverter.data;
 
+import com.jeffreydrost.currencyconverter.domain.FixerExchangeRates;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 
-public interface FixerExchangeRatesDao {
+interface FixerExchangeRatesDao {
 
     @GET("latest?base=USD")
     Call<FixerExchangeRates> getExchangeRates();
