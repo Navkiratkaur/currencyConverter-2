@@ -2,7 +2,10 @@ package com.jeffreydrost.currencyconverter.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jeffreydrost.currencyconverter.R;
@@ -41,6 +44,24 @@ public class MainActivity extends AppCompatActivity implements MainView {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         presenter = new MainPresenter(this);
+        setupEvents();
+    }
+
+    @DebugLog
+    void setupEvents() {
+        editDollars.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_NULL
+                        && event.getAction() == KeyEvent.ACTION_DOWN) {
+                    convertDollars();
+                }
+                if (actionId == EditorInfo.IME_ACTION_GO) {
+                    convertDollars();
+                }
+                return true;
+            }
+        });
     }
 
     @DebugLog
