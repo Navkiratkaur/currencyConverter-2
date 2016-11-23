@@ -3,9 +3,13 @@ package com.jeffreydrost.currencyconverter.presenter;
 import android.os.AsyncTask;
 
 import com.jeffreydrost.currencyconverter.data.ExchangeRateService;
+import com.jeffreydrost.currencyconverter.model.Currency;
 import com.jeffreydrost.currencyconverter.model.ExchangeRates;
+import com.jeffreydrost.currencyconverter.model.ExchangedDollars;
 import com.jeffreydrost.currencyconverter.view.MainView;
 import com.orhanobut.logger.Logger;
+
+import java.math.BigDecimal;
 
 import hugo.weaving.DebugLog;
 
@@ -20,7 +24,7 @@ public class MainPresenter {
     }
 
     @DebugLog
-    public void getExchangeRates() {
+    public void exchangeDollars() {
 
         new AsyncTask<Void, Void, ExchangeRates>() {
 
@@ -40,7 +44,7 @@ public class MainPresenter {
             @Override
             protected void onPostExecute(ExchangeRates exchangeRates) {
                 if(exchangeRates != null) {
-                    view.updateExchangeRates(exchangeRates);
+                    calculateExchangedDollars(exchangeRates);
                 } else {
                     Logger.wtf("No exchange rates were given to update!");
                 }
@@ -48,6 +52,20 @@ public class MainPresenter {
 
         }.execute();
 
+    }
+
+    @DebugLog
+    void calculateExchangedDollars(ExchangeRates exchangeRates) {
+        ExchangedDollars exchangedDollars = new ExchangedDollars();
+        exchangedDollars.asOf = exchangeRates.asOf;
+
+        BigDecimal dollars = new BigDecimal(view.getDollars());
+        exchangedDollars.exchanges.put(Currency.BRL,exchangeRates.rates.get(Currency.BRL).multiply(dollars).toPlainString());
+        exchangedDollars.exchanges.put(Currency.GBP,exchangeRates.rates.get(Currency.GBP).multiply(dollars).toPlainString());
+        exchangedDollars.exchanges.put(Currency.JPY,exchangeRates.rates.get(Currency.JPY).multiply(dollars).toPlainString());
+        exchangedDollars.exchanges.put(Currency.EUR,exchangeRates.rates.get(Currency.EUR).multiply(dollars).toPlainString());
+
+        view.showExchangedCurrency(exchangedDollars);
     }
 
 }

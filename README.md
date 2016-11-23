@@ -20,13 +20,13 @@ than just one class in the presenter package.
 
 Everything I wanted to do, but didn't get time:
 * Dependency injection
-* Crash tool
 * Offline / saving responses / cached for when you're somewhere that doesn't have internet access for exchange rates
 * Activity indicator
 * i18n (americans aren't the only ones who use dollars)
 * Kotlin app
 * Kotlin gradle
 * Better creative
+* Crash tool
 
 ## RESTful endpoint consumed
 

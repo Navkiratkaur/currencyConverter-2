@@ -1,11 +1,13 @@
 package com.jeffreydrost.currencyconverter.view;
 
-import com.jeffreydrost.currencyconverter.model.ExchangeRates;
+import com.jeffreydrost.currencyconverter.model.ExchangedDollars;
 
 public interface MainView {
 
-    void updateExchangeRates(ExchangeRates exchangeRates);
+    void showExchangedCurrency(ExchangedDollars exchangedDollars);
 
     void showGettingExchangeRatesError();
+
+    String getDollars();
 
 }
