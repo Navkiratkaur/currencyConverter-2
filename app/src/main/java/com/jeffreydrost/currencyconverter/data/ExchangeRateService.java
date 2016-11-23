@@ -1,8 +1,8 @@
 package com.jeffreydrost.currencyconverter.data;
 
-import com.jeffreydrost.currencyconverter.domain.Currency;
-import com.jeffreydrost.currencyconverter.domain.ExchangeRates;
-import com.jeffreydrost.currencyconverter.domain.FixerExchangeRates;
+import com.jeffreydrost.currencyconverter.model.Currency;
+import com.jeffreydrost.currencyconverter.model.ExchangeRates;
+import com.jeffreydrost.currencyconverter.model.FixerExchangeRates;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -32,6 +32,7 @@ public class ExchangeRateService {
     }
 
     // TODO: this should be in its own class (single responsibility principle + easier testing)
+    // TODO: when this is in its own class it should be injected
     @DebugLog
     ExchangeRates convert(FixerExchangeRates fixerRates) throws IOException, ParseException {
         ExchangeRates exchangeRates = new ExchangeRates();

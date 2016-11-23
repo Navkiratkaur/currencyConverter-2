@@ -1,4 +1,4 @@
-package com.jeffreydrost.currencyconverter.domain;
+package com.jeffreydrost.currencyconverter.model;
 
 public enum Currency {
 

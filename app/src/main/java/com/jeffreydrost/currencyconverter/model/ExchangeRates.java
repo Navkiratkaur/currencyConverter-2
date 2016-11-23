@@ -1,4 +1,4 @@
-package com.jeffreydrost.currencyconverter.domain;
+package com.jeffreydrost.currencyconverter.model;
 
 import java.math.BigDecimal;
 import java.util.GregorianCalendar;

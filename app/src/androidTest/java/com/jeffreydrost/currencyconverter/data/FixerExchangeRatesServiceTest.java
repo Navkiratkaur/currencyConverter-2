@@ -3,8 +3,8 @@ package com.jeffreydrost.currencyconverter.data;
 
 import android.support.test.runner.AndroidJUnit4;
 
-import com.jeffreydrost.currencyconverter.domain.ExchangeRates;
-import com.jeffreydrost.currencyconverter.domain.FixerExchangeRates;
+import com.jeffreydrost.currencyconverter.model.ExchangeRates;
+import com.jeffreydrost.currencyconverter.model.FixerExchangeRates;
 import com.orhanobut.logger.Logger;
 
 import org.junit.Before;

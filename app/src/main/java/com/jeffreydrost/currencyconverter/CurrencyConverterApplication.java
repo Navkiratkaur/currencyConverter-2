@@ -11,4 +11,5 @@ public class CurrencyConverterApplication extends Application {
     public void onCreate() {
         super.onCreate();
     }
+
 }
