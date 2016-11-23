@@ -24,7 +24,7 @@ public class MainPresenter {
     }
 
     @DebugLog
-    public void exchangeDollars() {
+    public void convertDollars() {
 
         new AsyncTask<Void, Void, ExchangeRates>() {
 

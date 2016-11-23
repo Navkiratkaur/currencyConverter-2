@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     protected void onResume() {
         super.onResume();
         // in case you're out past midnight & leave the app running, onResume vs onCreate for latest exchange rates
-        presenter.exchangeDollars();
+        presenter.convertDollars();
     }
 
     @DebugLog
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @DebugLog
     @OnClick(R.id.buttonConvert)
-    public void clickConvert() {
-        presenter.exchangeDollars();
+    public void convertDollars() {
+        presenter.convertDollars();
     }
 }

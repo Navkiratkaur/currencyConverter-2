@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:text="1"
-            android:ems="3"
+            android:ems="5"
             android:id="@+id/editDollars" />
 
     </LinearLayout>
