@@ -10,4 +10,8 @@ public interface MainView {
 
     String getDollars();
 
+    void clearConversions();
+
+    void voidConversions();
+
 }

@@ -2,6 +2,8 @@ package com.jeffreydrost.currencyconverter.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
@@ -49,18 +51,40 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @DebugLog
     void setupEvents() {
+
+        editDollars.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @DebugLog
+            @Override
+            public void afterTextChanged(Editable s) {
+                presenter.convertDollars();
+            }
+        });
+
         editDollars.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+
+            @DebugLog
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_NULL
                         && event.getAction() == KeyEvent.ACTION_DOWN) {
-                    convertDollars();
+                    presenter.convertDollars();
                 }
                 if (actionId == EditorInfo.IME_ACTION_GO) {
-                    convertDollars();
+                    presenter.convertDollars();
                 }
                 return true;
             }
+
         });
     }
 
@@ -97,5 +121,23 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @OnClick(R.id.buttonConvert)
     public void convertDollars() {
         presenter.convertDollars();
+    }
+
+    @Override
+    @DebugLog
+    public void clearConversions() {
+        editBrazilReais.setText("Loading...");
+        editEUEuro.setText("Loading...");
+        editJapanYen.setText("Loading...");
+        editUKPounds.setText("Loading...");
+    }
+
+    @DebugLog
+    @Override
+    public void voidConversions() {
+        editBrazilReais.setText("-");
+        editEUEuro.setText("-");
+        editJapanYen.setText("-");
+        editUKPounds.setText("-");
     }
 }

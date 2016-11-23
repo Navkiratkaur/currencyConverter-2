@@ -9,6 +9,8 @@ import com.jeffreydrost.currencyconverter.model.ExchangedDollars;
 import com.jeffreydrost.currencyconverter.view.MainView;
 import com.orhanobut.logger.Logger;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.math.BigDecimal;
 
 import hugo.weaving.DebugLog;
@@ -26,6 +28,13 @@ public class MainPresenter {
     @DebugLog
     public void convertDollars() {
 
+        view.clearConversions();
+
+        if(isDollarInputInvalid()) {
+            view.voidConversions();
+            return;
+        }
+
         new AsyncTask<Void, Void, ExchangeRates>() {
 
             @DebugLog
@@ -35,6 +44,7 @@ public class MainPresenter {
                     return exchangeRateService.getExchangeRates();
                 } catch (Throwable t) {
                     Logger.e(t,"Encountered error fetching exchange rates");
+                    view.voidConversions();
                     view.showGettingExchangeRatesError();
                     return null;
                 }
@@ -66,6 +76,12 @@ public class MainPresenter {
         exchangedDollars.exchanges.put(Currency.EUR,exchangeRates.rates.get(Currency.EUR).multiply(dollars).toPlainString());
 
         view.showExchangedCurrency(exchangedDollars);
+    }
+
+    @DebugLog
+    boolean isDollarInputInvalid() {
+        Logger.v(view.getDollars().trim());
+        return "".equalsIgnoreCase(view.getDollars().trim()) || !StringUtils.isNumeric(view.getDollars());
     }
 
 }
