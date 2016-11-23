@@ -17,9 +17,13 @@ import hugo.weaving.DebugLog;
 
 public class MainPresenter {
 
-    private MainView view;
+    MainView view;
 
-    private ExchangeRateService exchangeRateService = new ExchangeRateService();
+    ExchangeRateService exchangeRateService = new ExchangeRateService();
+
+    public MainPresenter() {
+
+    }
 
     public MainPresenter(MainView view) {
         this.view = view;
