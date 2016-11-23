@@ -26,17 +26,29 @@ A quick android currency converter that uses exchange rates from http://fixer.io
 
 ## How to run the tests
 
+In order to run tests, you'll need to be able to build the application first. Instructions how to build are documented above in
+the section "How To Build"
+
 ### How to run unit tests
+
+1. Run `gradle test` from the command prompt, or in Android Studio
+2. Test results are available in `./app/build/reports/tests/debug/index.html`
 
 ### How to run integration (instrumented) tests
 
+1. Run `gradle cAT` from the command prompt, or in Android Studio
+2. Test results are available in `./app/build/reports/androidTests/connected/index.html`
+
 ## Developer notes
+
+### Overall
 
 Having packages that only contain one class - such as presenter - by itself seems like overkill, but the purpose of doing so
 is to demonstrate use of MVP in android. This application only requires one activity, however if there were more, there'd be more
 than just one class in the presenter package.
 
-Everything I wanted to do, but didn't get time:
+### Everything I wanted to do, but didn't get time
+
 * Dependency injection
 * Offline / saving responses / cached for when you're somewhere that doesn't have internet access for exchange rates
 * Activity indicator
@@ -46,6 +58,6 @@ Everything I wanted to do, but didn't get time:
 * Better creative
 * Crash tool
 
-## RESTful endpoint consumed
+### RESTful endpoints consumed
 
 http://api.fixer.io/latest?base=USD
