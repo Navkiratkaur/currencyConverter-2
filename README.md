@@ -2,15 +2,33 @@
 
 A quick android currency converter that uses exchange rates from http://fixer.io/
 
-TODO: supply link to APK
-
 ## How to build and run the application
 
-TODO: this
+### How To Install
+
+1. Go to your android device's settings
+2. Navigate to security settings
+3. Ensure "Unknown sources" is enabled / checked (as in picture below)
+4. Visit https://github.com/phlogistic/currencyConverter/releases/download/0.1/app-debug.apk in your android device's browser
+5. Install
+
+![Install APKs from unknown sources](http://i.imgur.com/l8OCmy2.png)
+
+### How To Build
+
+1. Install git
+2. Clone the project (`git clone https://github.com/phlogistic/currencyConverter.git`)
+3. Install the android development kit
+4. Use the SDK manager to download libraries & a version of android
+5. Install gradle, or use gradle embedded in Android Studio
+6. Execute `gradle clean assembleDebug`
+7. The (debug) APK will be available in ./app/build/outputs/apk/app-debug.apk
 
 ## How to run the tests
 
-TODO: this
+### How to run unit tests
+
+### How to run integration (instrumented) tests
 
 ## Developer notes
 
